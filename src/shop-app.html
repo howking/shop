@@ -362,7 +362,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <!-- checkout view -->
       <shop-checkout name="checkout" cart="[[cart]]" total="[[total]]" route="{{subroute}}"></shop-checkout>
       <!-- account view -->
-      <shop-account name="account" profile="[[profile]]" route="[[subroute]]" prefilled-email="[[userEmail]]" selected="[[_pageSelected(page, 'account')]]"></shop-account>
+      <shop-account name="account" profile="[[profile]]" route="[[subroute]]" prefilled-email="[[userEmail]]"></shop-account>
 
       <shop-404-warning name="404"></shop-404-warning>
     </iron-pages>
@@ -480,10 +480,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               cb, cb, true);
           }
         }
-      }
-
-      _pageSelected(page, target) {
-        return page === target;
       }
 
       _pageLoaded(shouldResetLayout) {

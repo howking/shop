@@ -190,6 +190,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
          */
         route: {
           type: Object,
+          observer: '_routeChanged',
           notify: true
         },
 
@@ -234,12 +235,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           reflectToAttribute: true
         },
 
-        selected: {
-          type: Boolean,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
-        },
-
         _yoloDismissed: {
           type: Boolean,
           value: true
@@ -276,7 +271,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
       }
 
-      _pageChanged(thisPage) {
+      _routeChanged(route) {
+        const thisPage = route.prefix == '/account';
         this.accountData = this.$.account.byKey('account');
         if (thisPage && this.accountData && !this.accountData.isSignedIn()) {
           this._offerSignUp();
